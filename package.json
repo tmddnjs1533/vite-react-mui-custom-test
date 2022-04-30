@@ -37,7 +37,8 @@
     "react-error-boundary": "^3.1.4",
     "react-hook-form": "^7.30.0",
     "vite-plugin-svgr": "^1.1.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
