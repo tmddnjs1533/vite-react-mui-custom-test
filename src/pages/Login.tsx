@@ -46,6 +46,10 @@ const Login: FC = () => {
     formState: { errors },
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      id: '',
+      password: '',
+    },
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const onSubmit = (data: IFormInputs) => console.log(data);
@@ -80,7 +84,7 @@ const Login: FC = () => {
             />
             <FormControl variant="standard">
               <InputLabel htmlFor="password" error={!!errors.password}>
-                Password
+                비밀번호
               </InputLabel>
               <Controller
                 render={({ field }) => (
@@ -90,7 +94,7 @@ const Login: FC = () => {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          aria-label="toggle password visibility"
+                          aria-label="비밀번호 표시"
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                         >
@@ -105,10 +109,11 @@ const Login: FC = () => {
                 name="password"
                 control={control}
               />
-              <FormHelperText error>{errors.password?.message}</FormHelperText>
+              {errors.password && <FormHelperText error>{errors.password?.message}</FormHelperText>}
             </FormControl>
           </form>
         </CardContent>
+        {errors.password && <p role="alert">아이디와 비밀번호를 확인하세요.</p>}
         <CardActions
           sx={{
             justifyContent: 'center',
